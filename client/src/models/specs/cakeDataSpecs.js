@@ -9,6 +9,10 @@ describe("The Cake Data;", function(){
     cakes = new CakeData();
   })
 
+  beforeEach(function(){
+    cakes.reset();
+  })
+
   it("should have no data", function(){
     assert.deepEqual([], cakes.data)
   })
