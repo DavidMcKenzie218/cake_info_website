@@ -1,5 +1,6 @@
 const React = require("react");
 const ReactDOM = require('react-dom');
+const FrontEnd = require('./components/mainBodyContainer.jsx');
 const ApiRequest = require('./models/dataHandler.js');
 
 const addDiv = function(parent){
@@ -22,7 +23,7 @@ window.onload = function(){
   reactContainer();
 
   ReactDOM.render(
-    <h1>Hello World</h1>, 
+    <FrontEnd/>, 
     document.querySelector('#react-container')
   );
 

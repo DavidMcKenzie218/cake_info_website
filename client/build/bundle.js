@@ -48,6 +48,7 @@
 	
 	var React = __webpack_require__(3);
 	var ReactDOM = __webpack_require__(34);
+	var FrontEnd = __webpack_require__(180);
 	var ApiRequest = __webpack_require__(1);
 	
 	var addDiv = function addDiv(parent) {
@@ -69,11 +70,7 @@
 	
 	  reactContainer();
 	
-	  ReactDOM.render(React.createElement(
-	    'h1',
-	    null,
-	    'Hello World'
-	  ), document.querySelector('#react-container'));
+	  ReactDOM.render(React.createElement(FrontEnd, null), document.querySelector('#react-container'));
 	};
 
 /***/ },
@@ -21563,6 +21560,30 @@
 	
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(3);
+	
+	var Container = React.createClass({
+	  displayName: 'Container',
+	
+	
+	  render: function render() {
+	    return React.createElement(
+	      'h1',
+	      null,
+	      'Container'
+	    );
+	  }
+	
+	});
+	
+	module.exports = Container;
 
 /***/ }
 /******/ ]);
