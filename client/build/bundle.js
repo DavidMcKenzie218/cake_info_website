@@ -65,12 +65,12 @@
 	
 	window.onload = function () {
 	
-	  var api = new ApiRequest();
-	  var cakeData = new CakeData();
+	  // let api = new ApiRequest();
+	  // let cakeData = new CakeData();
 	
-	  api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function (data) {
-	    cakeData.addApiData(data);
-	  });
+	  // api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function(data){
+	  //   cakeData.addApiData(data);
+	  // });
 	
 	  reactContainer();
 	
@@ -21575,12 +21575,21 @@
 	var React = __webpack_require__(3);
 	var CakeInformation = __webpack_require__(181);
 	var ApiRequest = __webpack_require__(1);
+	var CakeData = __webpack_require__(182);
 	
 	var Container = React.createClass({
 	  displayName: 'Container',
 	
 	
-	  componentDidMount: function componentDidMount() {},
+	  componentDidMount: function componentDidMount() {
+	    var api = new ApiRequest();
+	    var cakeData = new CakeData();
+	
+	    api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function (data) {
+	      cakeData.addApiData(data);
+	    });
+	    console.log(cakeData.data);
+	  },
 	
 	  render: function render() {
 	    return React.createElement(CakeInformation, null);
