@@ -53,6 +53,8 @@
 	  var api = new ApiRequest();
 	
 	  api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json");
+	
+	  console.log(api.Data);
 	};
 
 /***/ },
@@ -66,17 +68,22 @@
 	var DataHandler = function DataHandler() {
 	
 	  this.apiRequest = new ApiQuery();
+	  this.data;
 	};
 	
 	DataHandler.prototype = {
 	
 	  getAll: function getAll(apiRoute) {
+	    var self = this;
 	    var url = apiRoute;
 	    this.apiRequest.get(url, function () {
 	      if (this.status != 200) return;
 	      var jsonString = this.responseText;
-	      console.log(jsonString);
+	      self.processData(jsonString);
 	    });
+	  },
+	  processData: function processData(jsonData) {
+	    this.data = JSON.parse(jsonData);
 	  }
 	
 	};
