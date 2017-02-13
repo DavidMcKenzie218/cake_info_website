@@ -50,6 +50,7 @@
 	var ReactDOM = __webpack_require__(34);
 	var FrontEnd = __webpack_require__(180);
 	var ApiRequest = __webpack_require__(1);
+	var CakeData = __webpack_require__(182);
 	
 	var addDiv = function addDiv(parent) {
 	  var div = document.createElement('div');
@@ -65,8 +66,11 @@
 	window.onload = function () {
 	
 	  var api = new ApiRequest();
+	  var cakeData = new CakeData();
 	
-	  api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json");
+	  api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function (data) {
+	    cakeData.addApiData(data);
+	  });
 	
 	  reactContainer();
 	
@@ -89,17 +93,18 @@
 	
 	DataHandler.prototype = {
 	
-	  getAll: function getAll(apiRoute) {
+	  getAll: function getAll(apiRoute, onCompleted) {
 	    var self = this;
 	    var url = apiRoute;
 	    this.apiRequest.get(url, function () {
 	      if (this.status != 200) return;
 	      var jsonString = this.responseText;
-	      self.processData(jsonString);
+	      self.processData(jsonString, onCompleted);
 	    });
 	  },
-	  processData: function processData(jsonData) {
+	  processData: function processData(jsonData, onCompleted) {
 	    this.data = JSON.parse(jsonData);
+	    onCompleted(this.data);
 	  }
 	
 	};
@@ -21569,10 +21574,13 @@
 	
 	var React = __webpack_require__(3);
 	var CakeInformation = __webpack_require__(181);
+	var ApiRequest = __webpack_require__(1);
 	
 	var Container = React.createClass({
 	  displayName: 'Container',
 	
+	
+	  componentDidMount: function componentDidMount() {},
 	
 	  render: function render() {
 	    return React.createElement(CakeInformation, null);
@@ -21605,6 +21613,40 @@
 	});
 	
 	module.exports = cakeInformation;
+
+/***/ },
+/* 182 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	var CakeData = function CakeData() {
+	
+	  this.data = [];
+	};
+	
+	CakeData.prototype = {
+	
+	  reset: function reset() {
+	    this.data = [];
+	  },
+	
+	  //Adds data to the end of this.data
+	  addData: function addData(newData) {
+	    this.data.push(newData);
+	  },
+	
+	  //Takes in the api data in array from and adds all the cakes individually
+	  addApiData: function addApiData(apiData) {
+	    var cakeList = apiData;
+	    cakeList.forEach(function (cake) {
+	      this.addData(cake);
+	    }.bind(this));
+	  }
+	
+	};
+	
+	module.exports = CakeData;
 
 /***/ }
 /******/ ]);

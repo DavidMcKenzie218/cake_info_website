@@ -9,17 +9,18 @@ const DataHandler = function(){
 
 DataHandler.prototype = {
 
-  getAll: function(apiRoute){
+  getAll: function(apiRoute, onCompleted){
     const self = this;
     var url = apiRoute;
     this.apiRequest.get(url, function(){
       if(this.status != 200) return;
       let jsonString = this.responseText;
-      self.processData(jsonString);
+      self.processData(jsonString, onCompleted);
     })
   },
-  processData: function(jsonData){
+  processData: function(jsonData, onCompleted){
     this.data = JSON.parse(jsonData);
+    onCompleted(this.data);
   }
 
 }
