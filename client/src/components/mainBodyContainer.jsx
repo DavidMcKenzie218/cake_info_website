@@ -5,25 +5,33 @@ const CakeData = require('../models/cakeData.js');
 
 const Container = React.createClass({
 
-  
-
   getInitialState: function(){
-    let api = new ApiRequest();
-    let cakeData = new CakeData();
+    this.api = new ApiRequest();
+    this.cakeData = new CakeData();
 
-    api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function(data){
-      cakeData.addApiData(data);
-    });
-    return {cakes: cakeData.data}
+    
+    return {cakes: []}
   },
 
   componentDidMount: function(){
-    console.log(this.state.cakes)    
+    this.api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function(data){
+      let cakes = this.cakeData.addApiData(data);
+      if(cakes != this.state.cakes) this.setState({cakes: this.cakeData.data});
+    }.bind(this))   
   },
 
   render: function(){
+
+    if(this.state.cakes == []) return(<p>Loading cakes now</p>)
+
+    let cakes = this.state.cakes.map(function(cake, index){
+      return(<CakeInformation id={cake} key={index} title={cake.title} image={cake.image} desc={cake.desc}></CakeInformation>)
+    })
+
     return(
-      <CakeInformation/>
+      <div>
+        {cakes}
+      </div>
     )
   }
 

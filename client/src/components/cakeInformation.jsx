@@ -4,7 +4,11 @@ const cakeInformation = React.createClass({
 
   render: function(){
     return(
-      <h1>Information</h1>
+      <div>
+        <h3>{this.props.title}</h3>
+        <img src={this.props.image}/>
+        <p>{this.props.desc}</p>
+      </div>
     )
   }
 
