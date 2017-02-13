@@ -1,10 +1,11 @@
 const React = require('react');
+const CakeInformation = require('./cakeInformation.jsx');
 
 const Container = React.createClass({
 
   render: function(){
     return(
-      <h1>Container</h1>
+      <CakeInformation/>
     )
   }
 

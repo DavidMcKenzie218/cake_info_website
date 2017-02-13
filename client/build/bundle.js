@@ -21568,22 +21568,43 @@
 	'use strict';
 	
 	var React = __webpack_require__(3);
+	var CakeInformation = __webpack_require__(181);
 	
 	var Container = React.createClass({
 	  displayName: 'Container',
 	
 	
 	  render: function render() {
-	    return React.createElement(
-	      'h1',
-	      null,
-	      'Container'
-	    );
+	    return React.createElement(CakeInformation, null);
 	  }
 	
 	});
 	
 	module.exports = Container;
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(3);
+	
+	var cakeInformation = React.createClass({
+	  displayName: 'cakeInformation',
+	
+	
+	  render: function render() {
+	    return React.createElement(
+	      'h1',
+	      null,
+	      'Information'
+	    );
+	  }
+	
+	});
+	
+	module.exports = cakeInformation;
 
 /***/ }
 /******/ ]);
