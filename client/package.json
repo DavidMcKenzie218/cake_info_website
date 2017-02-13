@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha src/models/specs"
+    "test": "node_modules/.bin/mocha src/models/specs", 
+    "start": "webpack -w"
   },
   "author": "",
   "license": "ISC",

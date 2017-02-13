@@ -1,4 +1,4 @@
-const ApiRequest = require('dataHandler.js');
+const ApiRequest = require('./models/dataHandler.js');
 
 window.onload = function(){
 
