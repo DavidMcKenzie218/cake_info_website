@@ -3,6 +3,7 @@ const CakeInformation = require('./cakeInformation.jsx');
 const ApiRequest = require('../models/dataHandler.js');
 const CakeData = require('../models/cakeData.js');
 const SearchBox = require('./searchBox.js');
+const AddCake = require('./addCake.jsx');
 
 const Container = React.createClass({
 
@@ -21,6 +22,10 @@ const Container = React.createClass({
 
   resetSearch: function(){
     this.setState({search: false, cakes: this.cakeData.data})
+  },
+
+  addNewCake: function(title, image, desc){
+    this.cakeData.addData({title: title, image: image, desc: desc})
   },
 
   componentDidMount: function(){
@@ -42,6 +47,7 @@ const Container = React.createClass({
       <div>
         <SearchBox searchCakes={this.searchForCake} stopSearch={this.resetSearch}/>
         {cakes}
+        <AddCake addCake={this.addNewCake}/>
       </div>
     )
   }

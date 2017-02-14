@@ -21522,6 +21522,7 @@
 	var ApiRequest = __webpack_require__(180);
 	var CakeData = __webpack_require__(182);
 	var SearchBox = __webpack_require__(183);
+	var AddCake = __webpack_require__(184);
 	
 	var Container = React.createClass({
 	  displayName: 'Container',
@@ -21541,6 +21542,10 @@
 	
 	  resetSearch: function resetSearch() {
 	    this.setState({ search: false, cakes: this.cakeData.data });
+	  },
+	
+	  addNewCake: function addNewCake(title, image, desc) {
+	    this.cakeData.addData({ title: title, image: image, desc: desc });
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -21566,7 +21571,8 @@
 	      'div',
 	      null,
 	      React.createElement(SearchBox, { searchCakes: this.searchForCake, stopSearch: this.resetSearch }),
-	      cakes
+	      cakes,
+	      React.createElement(AddCake, { addCake: this.addNewCake })
 	    );
 	  }
 	
@@ -21750,6 +21756,68 @@
 	});
 	
 	module.exports = SearchBox;
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var AddCake = React.createClass({
+	  displayName: "AddCake",
+	
+	
+	  addTitle: function addTitle(event) {
+	    this.newTitle = event.target.value;
+	  },
+	
+	  addImage: function addImage(event) {
+	    this.newImage = event.target.value;
+	  },
+	
+	  addDescription: function addDescription(event) {
+	    this.newDesc = event.target.value;
+	  },
+	
+	  submitData: function submitData() {
+	    this.props.addCake(this.newTitle, this.newImage, this.newDesc);
+	  },
+	
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement(
+	        "p",
+	        null,
+	        "Name of the Cake"
+	      ),
+	      React.createElement("input", { type: "text", onChange: this.addTitle }),
+	      React.createElement(
+	        "p",
+	        null,
+	        "Url for an Image of the Cake"
+	      ),
+	      React.createElement("input", { type: "text", onChange: this.addImage }),
+	      React.createElement(
+	        "p",
+	        null,
+	        "Decription of the Cake"
+	      ),
+	      React.createElement("input", { type: "text", onChange: this.addDescription }),
+	      React.createElement(
+	        "button",
+	        { onClick: this.submitData },
+	        "Submit"
+	      )
+	    );
+	  }
+	
+	});
+	
+	module.exports = AddCake;
 
 /***/ }
 /******/ ]);
