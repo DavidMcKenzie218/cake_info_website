@@ -1,6 +1,7 @@
 const CakeData = function(){
 
   this.data = [];
+  this.searchResults = [];
 
 }
 
@@ -8,6 +9,7 @@ CakeData.prototype = {
 
   reset: function(){
     this.data = [];
+    this.searchResults = [];
   },
 
   //Adds data to the end of this.data
@@ -21,6 +23,10 @@ CakeData.prototype = {
     cakeList.forEach(function(cake){
       this.addData(cake);
     }.bind(this))
+  },
+
+  addSearchResult: function(result){
+    this.searchResults.push(result)
   }
 
 }
