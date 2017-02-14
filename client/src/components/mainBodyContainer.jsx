@@ -11,16 +11,16 @@ const Container = React.createClass({
     this.cakeData = new CakeData();
 
     
-    return {cakes: [], search: false, searchResults: []}
+    return {cakes: [], search: false}
   },
 
   searchForCake: function(keyword){
     this.cakeData.searchFor(keyword);
-    if(this.cakeData.searchResults.length > 0) this.setState({search: true, searchResults: this.cakeData.searchResults})
+    if(this.cakeData.searchResults.length > 0) this.setState({search: true, cakes: this.cakeData.searchResults})
   },
 
   resetSearch: function(){
-    this.setState({search: false, searchResults: []})
+    this.setState({search: false, cakes: this.cakeData.data})
   },
 
   componentDidMount: function(){
