@@ -21679,6 +21679,10 @@
 	    this.searchResults = [];
 	  },
 	
+	  resetSearch: function resetSearch() {
+	    this.searchResults = [];
+	  },
+	
 	  //Adds data to the end of this.data
 	  addData: function addData(newData) {
 	    this.data.push(newData);
@@ -21697,6 +21701,7 @@
 	  },
 	
 	  searchFor: function searchFor(keyword) {
+	    this.resetSearch();
 	    this.data.forEach(function (cake) {
 	      var name = cake.title;
 	      var result = name.toLowerCase().match(keyword.toLowerCase());

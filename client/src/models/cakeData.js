@@ -12,6 +12,10 @@ CakeData.prototype = {
     this.searchResults = [];
   },
 
+  resetSearch: function(){
+    this.searchResults = [];
+  },
+
   //Adds data to the end of this.data
   addData: function(newData){
     this.data.push(newData)
@@ -30,6 +34,7 @@ CakeData.prototype = {
   },
 
   searchFor: function(keyword){
+    this.resetSearch();
     this.data.forEach(function(cake){
       let name = cake.title;
       let result = name.toLowerCase().match(keyword.toLowerCase());
