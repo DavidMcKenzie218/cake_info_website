@@ -21808,7 +21808,11 @@
 	        "Description of Cake:",
 	        React.createElement("input", { type: "text", onChange: this.addDescription })
 	      ),
-	      React.createElement("button", { value: "submit", onClick: this.submitData })
+	      React.createElement(
+	        "button",
+	        { onClick: this.submitData },
+	        "Submit"
+	      )
 	    );
 	  }
 	

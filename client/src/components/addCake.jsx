@@ -33,7 +33,7 @@ const AddCake = React.createClass({
             Description of Cake: 
             <input type="text" onChange={this.addDescription} />
           </label>
-          <button value="submit" onClick={this.submitData}/>
+          <button onClick={this.submitData}>Submit</button>
       </div>
     )
   }
