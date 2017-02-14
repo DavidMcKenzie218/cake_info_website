@@ -2,6 +2,7 @@ const React = require('react');
 const CakeInformation = require('./cakeInformation.jsx');
 const ApiRequest = require('../models/dataHandler.js');
 const CakeData = require('../models/cakeData.js');
+const SearchBox = require('./searchBox.js');
 
 const Container = React.createClass({
 
@@ -30,6 +31,7 @@ const Container = React.createClass({
 
     return(
       <div>
+        <SearchBox />
         {cakes}
       </div>
     )

@@ -21521,6 +21521,7 @@
 	var CakeInformation = __webpack_require__(179);
 	var ApiRequest = __webpack_require__(180);
 	var CakeData = __webpack_require__(182);
+	var SearchBox = __webpack_require__(183);
 	
 	var Container = React.createClass({
 	  displayName: 'Container',
@@ -21555,6 +21556,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
+	      React.createElement(SearchBox, null),
 	      cakes
 	    );
 	  }
@@ -21661,12 +21663,14 @@
 	var CakeData = function CakeData() {
 	
 	  this.data = [];
+	  this.searchResults = [];
 	};
 	
 	CakeData.prototype = {
 	
 	  reset: function reset() {
 	    this.data = [];
+	    this.searchResults = [];
 	  },
 	
 	  //Adds data to the end of this.data
@@ -21680,11 +21684,50 @@
 	    cakeList.forEach(function (cake) {
 	      this.addData(cake);
 	    }.bind(this));
+	  },
+	
+	  addSearchResult: function addSearchResult(result) {
+	    this.searchResults.push(result);
+	  },
+	
+	  searchFor: function searchFor(keyword) {
+	    this.data.forEach(function (cake) {
+	      if (cake.name == keyword) this.addSearchResult(cake);
+	    }.bind(this));
 	  }
 	
 	};
 	
 	module.exports = CakeData;
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var SearchBox = React.createClass({
+	  displayName: "SearchBox",
+	
+	
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement("input", { type: "text" }),
+	      React.createElement(
+	        "button",
+	        null,
+	        "Search"
+	      )
+	    );
+	  }
+	
+	});
+	
+	module.exports = SearchBox;
 
 /***/ }
 /******/ ]);
