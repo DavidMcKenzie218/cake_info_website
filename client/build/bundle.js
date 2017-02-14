@@ -21546,6 +21546,7 @@
 	
 	  addNewCake: function addNewCake(title, image, desc) {
 	    this.cakeData.addData({ title: title, image: image, desc: desc });
+	    this.setState({ cakes: this.cakeData.data });
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -21790,28 +21791,24 @@
 	      "div",
 	      null,
 	      React.createElement(
-	        "p",
+	        "label",
 	        null,
-	        "Name of the Cake"
+	        "Name of Cake:",
+	        React.createElement("input", { type: "text", onChange: this.addTitle })
 	      ),
-	      React.createElement("input", { type: "text", onChange: this.addTitle }),
 	      React.createElement(
-	        "p",
+	        "label",
 	        null,
-	        "Url for an Image of the Cake"
+	        "Url of an Image of the Cake:",
+	        React.createElement("input", { type: "text", onChange: this.addImage })
 	      ),
-	      React.createElement("input", { type: "text", onChange: this.addImage }),
 	      React.createElement(
-	        "p",
+	        "label",
 	        null,
-	        "Decription of the Cake"
+	        "Description of Cake:",
+	        React.createElement("input", { type: "text", onChange: this.addDescription })
 	      ),
-	      React.createElement("input", { type: "text", onChange: this.addDescription }),
-	      React.createElement(
-	        "button",
-	        { onClick: this.submitData },
-	        "Submit"
-	      )
+	      React.createElement("button", { value: "submit", onClick: this.submitData })
 	    );
 	  }
 	

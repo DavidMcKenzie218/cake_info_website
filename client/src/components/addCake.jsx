@@ -21,13 +21,19 @@ const AddCake = React.createClass({
   render: function(){
     return(
       <div>
-        <p>Name of the Cake</p>
-        <input type="text" onChange={this.addTitle}/>
-        <p>Url for an Image of the Cake</p>
-        <input type="text" onChange={this.addImage}/>
-        <p>Decription of the Cake</p>
-        <input type="text" onChange={this.addDescription}/>
-        <button onClick={this.submitData}>Submit</button>
+          <label>
+            Name of Cake: 
+            <input type="text" onChange={this.addTitle} />
+          </label>
+          <label>
+            Url of an Image of the Cake: 
+            <input type="text" onChange={this.addImage} />
+          </label>
+          <label>
+            Description of Cake: 
+            <input type="text" onChange={this.addDescription} />
+          </label>
+          <button value="submit" onClick={this.submitData}/>
       </div>
     )
   }

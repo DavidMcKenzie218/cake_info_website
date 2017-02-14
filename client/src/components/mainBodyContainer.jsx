@@ -25,7 +25,8 @@ const Container = React.createClass({
   },
 
   addNewCake: function(title, image, desc){
-    this.cakeData.addData({title: title, image: image, desc: desc})
+    this.cakeData.addData({title: title, image: image, desc: desc});
+    this.setState({cakes: this.cakeData.data});
   },
 
   componentDidMount: function(){
