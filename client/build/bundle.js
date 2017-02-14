@@ -21537,7 +21537,7 @@
 	  searchForCake: function searchForCake(keyword) {
 	    // console.log("Searching for: "+keyword);
 	    this.cakeData.searchFor(keyword);
-	    // console.log(this.cakeData.searchResults);
+	    console.log(this.cakeData.searchResults);
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -21698,8 +21698,8 @@
 	
 	  searchFor: function searchFor(keyword) {
 	    this.data.forEach(function (cake) {
-	      var name = cake.name;
-	      var result = name.match(keyword);
+	      var name = cake.title;
+	      var result = name.toLowerCase().match(keyword.toLowerCase());
 	      if (result != null) this.addSearchResult(cake);
 	    }.bind(this));
 	  }

@@ -17,7 +17,7 @@ const Container = React.createClass({
   searchForCake: function(keyword){
     // console.log("Searching for: "+keyword);
     this.cakeData.searchFor(keyword);
-    // console.log(this.cakeData.searchResults);
+    console.log(this.cakeData.searchResults);
   },
 
   componentDidMount: function(){

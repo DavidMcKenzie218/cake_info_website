@@ -31,8 +31,8 @@ CakeData.prototype = {
 
   searchFor: function(keyword){
     this.data.forEach(function(cake){
-      let name = cake.name;
-      let result = name.match(keyword);
+      let name = cake.title;
+      let result = name.toLowerCase().match(keyword.toLowerCase());
       if(result != null) this.addSearchResult(cake);
     }.bind(this))
   }

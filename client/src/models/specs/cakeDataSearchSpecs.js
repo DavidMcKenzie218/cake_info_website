@@ -4,7 +4,7 @@ const CakeData = require('../cakeData.js');
 describe("When searching for cakes;", function(){
 
   let cakes;
-  let exampleData = [{name: "sponge"}, {name: "chocolate"}]
+  let exampleData = [{title: "sponge"}, {title: "chocolate"}]
 
   before(function(){
     cakes = new CakeData();
@@ -26,13 +26,13 @@ describe("When searching for cakes;", function(){
   it("should be able t find a specific cake", function(){
     cakes.addApiData(exampleData);
     cakes.searchFor("sponge");
-    assert.deepEqual([{name: "sponge"}], cakes.searchResults);
+    assert.deepEqual([{title: "sponge"}], cakes.searchResults);
   })
 
   it("can find a cake with only part of name", function(){
     cakes.addApiData(exampleData);
     cakes.searchFor("spo");
-    assert.deepEqual([{name: "sponge"}], cakes.searchResults);
+    assert.deepEqual([{title: "sponge"}], cakes.searchResults);
   })
 
 })
