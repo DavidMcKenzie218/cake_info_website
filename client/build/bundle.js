@@ -21534,6 +21534,12 @@
 	    return { cakes: [] };
 	  },
 	
+	  searchForCake: function searchForCake(keyword) {
+	    // console.log("Searching for: "+keyword);
+	    this.cakeData.searchFor(keyword);
+	    console.log(this.cakeData.searchResults);
+	  },
+	
 	  componentDidMount: function componentDidMount() {
 	    this.api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function (data) {
 	      var cakes = this.cakeData.addApiData(data);
@@ -21556,7 +21562,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(SearchBox, null),
+	      React.createElement(SearchBox, { searchCakes: this.searchForCake }),
 	      cakes
 	    );
 	  }
@@ -21712,16 +21718,21 @@
 	  displayName: "SearchBox",
 	
 	
+	  search: function search(event) {
+	    var keyword = event.target.value;
+	    if (keyword.length > 3) this.props.searchCakes(keyword);
+	  },
+	
 	  render: function render() {
 	    return React.createElement(
 	      "div",
 	      null,
-	      React.createElement("input", { type: "text" }),
 	      React.createElement(
-	        "button",
+	        "p",
 	        null,
-	        "Search"
-	      )
+	        "Search: "
+	      ),
+	      React.createElement("input", { type: "text", onChange: this.search })
 	    );
 	  }
 	

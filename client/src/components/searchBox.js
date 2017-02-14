@@ -2,11 +2,16 @@ const React = require('react');
 
 const SearchBox = React.createClass({
 
+  search: function(event){
+    let keyword = event.target.value;
+    if(keyword.length > 3) this.props.searchCakes(keyword);
+  },
+
   render: function(){
     return(
       <div>
-        <input type="text" />
-        <button>Search</button>
+        <p>Search: </p>
+        <input type="text" onChange={this.search}/>
       </div>
       )
   }
