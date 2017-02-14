@@ -27,6 +27,12 @@ CakeData.prototype = {
 
   addSearchResult: function(result){
     this.searchResults.push(result)
+  },
+
+  searchFor: function(keyword){
+    this.data.forEach(function(cake){
+      if(cake.name == keyword) this.addSearchResult(cake);
+    }.bind(this))
   }
 
 }
