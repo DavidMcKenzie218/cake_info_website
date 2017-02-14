@@ -19,6 +19,10 @@ const Container = React.createClass({
     if(this.cakeData.searchResults.length > 0) this.setState({search: true, searchResults: this.cakeData.searchResults})
   },
 
+  resetSearch: function(){
+    this.setState({search: false, searchResults: []})
+  },
+
   componentDidMount: function(){
     this.api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function(data){
       let cakes = this.cakeData.addApiData(data);
@@ -36,7 +40,7 @@ const Container = React.createClass({
 
     return(
       <div>
-        <SearchBox searchCakes={this.searchForCake}/>
+        <SearchBox searchCakes={this.searchForCake} stopSearch={this.resetSearch}/>
         {cakes}
       </div>
     )

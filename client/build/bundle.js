@@ -21539,6 +21539,10 @@
 	    if (this.cakeData.searchResults.length > 0) this.setState({ search: true, searchResults: this.cakeData.searchResults });
 	  },
 	
+	  resetSearch: function resetSearch() {
+	    this.setState({ search: false, searchResults: [] });
+	  },
+	
 	  componentDidMount: function componentDidMount() {
 	    this.api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function (data) {
 	      var cakes = this.cakeData.addApiData(data);
@@ -21561,7 +21565,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(SearchBox, { searchCakes: this.searchForCake }),
+	      React.createElement(SearchBox, { searchCakes: this.searchForCake, stopSearch: this.resetSearch }),
 	      cakes
 	    );
 	  }
@@ -21727,6 +21731,7 @@
 	  search: function search(event) {
 	    var keyword = event.target.value;
 	    if (keyword.length > 3) this.props.searchCakes(keyword);
+	    if (keyword === "") this.props.stopSearch();
 	  },
 	
 	  render: function render() {

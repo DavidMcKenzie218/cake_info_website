@@ -5,6 +5,7 @@ const SearchBox = React.createClass({
   search: function(event){
     let keyword = event.target.value;
     if(keyword.length > 3) this.props.searchCakes(keyword);
+    if(keyword === "") this.props.stopSearch();
   },
 
   render: function(){
