@@ -29,4 +29,10 @@ describe("When searching for cakes;", function(){
     assert.deepEqual([{name: "sponge"}], cakes.searchResults);
   })
 
+  it("can find a cake with only part of name", function(){
+    cakes.addApiData(exampleData);
+    cakes.searchFor("spo");
+    assert.deepEqual([{name: "sponge"}], cakes.searchResults);
+  })
+
 })

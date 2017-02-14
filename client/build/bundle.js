@@ -21537,7 +21537,7 @@
 	  searchForCake: function searchForCake(keyword) {
 	    // console.log("Searching for: "+keyword);
 	    this.cakeData.searchFor(keyword);
-	    console.log(this.cakeData.searchResults);
+	    // console.log(this.cakeData.searchResults);
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -21698,7 +21698,9 @@
 	
 	  searchFor: function searchFor(keyword) {
 	    this.data.forEach(function (cake) {
-	      if (cake.name == keyword) this.addSearchResult(cake);
+	      var name = cake.name;
+	      var result = name.match(keyword);
+	      if (result != null) this.addSearchResult(cake);
 	    }.bind(this));
 	  }
 	
