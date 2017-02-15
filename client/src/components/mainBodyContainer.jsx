@@ -10,7 +10,10 @@ const Container = React.createClass({
   getInitialState: function(){
     this.api = new ApiRequest();
     this.cakeData = new CakeData();
-
+    this.bodyStyle = {
+      display: "flex",
+      flexWrap: "wrap"
+    }
     
     return {cakes: [], search: false}
   },
@@ -47,8 +50,10 @@ const Container = React.createClass({
     return(
       <div>
         <SearchBox searchCakes={this.searchForCake} stopSearch={this.resetSearch}/>
-        {cakes}
-        <AddCake addCake={this.addNewCake}/>
+        <div style={this.bodyStyle}>
+          {cakes}
+          <AddCake addCake={this.addNewCake}/>
+        </div>
       </div>
     )
   }

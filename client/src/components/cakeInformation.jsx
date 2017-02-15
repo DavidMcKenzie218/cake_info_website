@@ -3,6 +3,14 @@ const React = require('react');
 const cakeInformation = React.createClass({
 
   getInitialState: function(){
+    this.cakeStyle = {
+      height: "600px"
+    }
+    this.imageDimensions = {
+      height: "300px",
+      width: "300px"
+    }
+
     return({edit: false, title: this.props.title, img: this.props.image, desc: this.props.desc});
   },
 
@@ -21,7 +29,7 @@ const cakeInformation = React.createClass({
   render: function(){
     if(this.state.edit){
       return(
-        <div>
+        <div style={this.cakeStyle}>
           <label>
             Name: 
             <input onChange={this.editTitle} placeholder={this.state.title}/>
@@ -40,9 +48,9 @@ const cakeInformation = React.createClass({
     }
 
     return(
-        <div>
+        <div style={this.cakeStyle}>
           <h3>{this.state.title}</h3>
-          <img src={this.state.img}/>
+          <img src={this.state.img} style={this.imageDimensions}/>
           <p>{this.state.desc}</p>
           <button onClick={this.editCake}>Edit</button>
         </div>

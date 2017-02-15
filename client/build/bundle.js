@@ -65,13 +65,6 @@
 	
 	window.onload = function () {
 	
-	  // let api = new ApiRequest();
-	  // let cakeData = new CakeData();
-	
-	  // api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function(data){
-	  //   cakeData.addApiData(data);
-	  // });
-	
 	  reactContainer();
 	
 	  ReactDOM.render(React.createElement(FrontEnd, null), document.querySelector('#react-container'));
@@ -21531,6 +21524,10 @@
 	  getInitialState: function getInitialState() {
 	    this.api = new ApiRequest();
 	    this.cakeData = new CakeData();
+	    this.bodyStyle = {
+	      display: "flex",
+	      flexWrap: "wrap"
+	    };
 	
 	    return { cakes: [], search: false };
 	  },
@@ -21572,8 +21569,12 @@
 	      'div',
 	      null,
 	      React.createElement(SearchBox, { searchCakes: this.searchForCake, stopSearch: this.resetSearch }),
-	      cakes,
-	      React.createElement(AddCake, { addCake: this.addNewCake })
+	      React.createElement(
+	        'div',
+	        { style: this.bodyStyle },
+	        cakes,
+	        React.createElement(AddCake, { addCake: this.addNewCake })
+	      )
 	    );
 	  }
 	
@@ -21585,15 +21586,23 @@
 /* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var React = __webpack_require__(1);
 	
 	var cakeInformation = React.createClass({
-	  displayName: 'cakeInformation',
+	  displayName: "cakeInformation",
 	
 	
 	  getInitialState: function getInitialState() {
+	    this.cakeStyle = {
+	      height: "600px"
+	    };
+	    this.imageDimensions = {
+	      height: "300px",
+	      width: "300px"
+	    };
+	
 	    return { edit: false, title: this.props.title, img: this.props.image, desc: this.props.desc };
 	  },
 	
@@ -21612,52 +21621,52 @@
 	  render: function render() {
 	    if (this.state.edit) {
 	      return React.createElement(
-	        'div',
-	        null,
+	        "div",
+	        { style: this.cakeStyle },
 	        React.createElement(
-	          'label',
+	          "label",
 	          null,
-	          'Name:',
-	          React.createElement('input', { onChange: this.editTitle, placeholder: this.state.title })
+	          "Name:",
+	          React.createElement("input", { onChange: this.editTitle, placeholder: this.state.title })
 	        ),
 	        React.createElement(
-	          'label',
+	          "label",
 	          null,
-	          'Image:',
-	          React.createElement('input', { onChange: this.editImage, placeholder: this.state.img })
+	          "Image:",
+	          React.createElement("input", { onChange: this.editImage, placeholder: this.state.img })
 	        ),
 	        React.createElement(
-	          'label',
+	          "label",
 	          null,
-	          'Description:',
-	          React.createElement('input', { onChange: this.editDescriptions, placeholder: this.state.desc })
+	          "Description:",
+	          React.createElement("input", { onChange: this.editDescriptions, placeholder: this.state.desc })
 	        ),
 	        React.createElement(
-	          'button',
+	          "button",
 	          { onClick: this.saveChanges },
-	          'Save Changes'
+	          "Save Changes"
 	        )
 	      );
 	    }
 	
 	    return React.createElement(
-	      'div',
-	      null,
+	      "div",
+	      { style: this.cakeStyle },
 	      React.createElement(
-	        'h3',
+	        "h3",
 	        null,
 	        this.state.title
 	      ),
-	      React.createElement('img', { src: this.state.img }),
+	      React.createElement("img", { src: this.state.img, style: this.imageDimensions }),
 	      React.createElement(
-	        'p',
+	        "p",
 	        null,
 	        this.state.desc
 	      ),
 	      React.createElement(
-	        'button',
+	        "button",
 	        { onClick: this.editCake },
-	        'Edit'
+	        "Edit"
 	      )
 	    );
 	  }
