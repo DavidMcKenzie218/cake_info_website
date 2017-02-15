@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha src/models/specs", 
+    "test": "node_modules/.bin/mocha src/models/specs",
     "start": "webpack -w"
   },
   "author": "",
@@ -19,6 +19,12 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "html-webpack-plugin": "^2.26.0",
+    "karma": "^1.4.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-mocha": "^1.3.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.2",
     "mocha": "^3.2.0",
     "webpack": "^1.14.0"
   }
