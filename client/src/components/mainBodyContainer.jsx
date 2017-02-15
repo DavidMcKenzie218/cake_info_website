@@ -17,6 +17,7 @@ const Container = React.createClass({
   searchForCake: function(keyword){
     this.cakeData.searchFor(keyword);
     if(this.cakeData.searchResults.length > 0) this.setState({search: true, cakes: this.cakeData.searchResults})
+      console.log(this.state.cakes);
   },
 
   resetSearch: function(){
@@ -26,6 +27,10 @@ const Container = React.createClass({
   addNewCake: function(title, image, desc){
     this.cakeData.addData({title: title, image: image, desc: desc});
     this.setState({cakes: this.cakeData.data});
+  },
+
+  editCurrentCake: function(cakeData, index){
+    this.cakeData.editData(index, cakeData)
   },
 
   componentDidMount: function(){
@@ -47,8 +52,8 @@ const Container = React.createClass({
     if(this.state.cakes == []) return(<p>Loading cakes now</p>)
 
     let cakes = this.state.cakes.map(function(cake, index){
-      return(<CakeInformation id={cake} key={index} title={cake.title} image={cake.image} desc={cake.desc}></CakeInformation>)
-    })
+      return(<CakeInformation id={cake} key={index} index={index} title={cake.title} image={cake.image} desc={cake.desc} editCakeData={this.editCurrentCake}></CakeInformation>)
+    }.bind(this))
 
     return(
       <div>

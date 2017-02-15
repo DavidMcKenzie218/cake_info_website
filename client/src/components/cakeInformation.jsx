@@ -30,14 +30,27 @@ const cakeInformation = React.createClass({
 
   saveChanges: function(){
     this.setState({edit: false});
+    this.props.editCakeData({title: this.state.title, image: this.state.img, desc: this.state.desc}, this.props.index);
   },
 
   editTitle: function(event){
-    this.setState({title: event.target.value})
+    this.setState({title: event.target.value});
+  },
+
+  editImage: function(){
+    this.setState({img: event.target.value});
+  },
+  
+  editDescriptions: function(){
+    this.setState({desc: this.target.value});
   },  
 
   componentWillMount: function(){
     this.styles();
+  },
+
+  componentWillReceiveProps: function(nextProps){
+    this.setState({title: nextProps.title, img: nextProps.image, desc: nextProps.desc})
   },
 
   render: function(){
