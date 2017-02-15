@@ -9,8 +9,8 @@ const cakeInformation = React.createClass({
 
   styles: function(){
     this.cakeStyle = {
-      height: "400px",
-      width: "400px",
+      height: "450px",
+      width: "300px",
       margin: "8px"
     }
     this.imageDimensions = {
@@ -22,6 +22,23 @@ const cakeInformation = React.createClass({
       display: "block",
       margin: "1px"
     }
+    this.buttonStyle = {
+      height: "40px",
+      width: "60px"
+    }
+    this.optimisation();
+  },
+
+  optimisation: function(){
+    // if(window.innerWidth =< 800) {
+      this.cakeStyle.height =  "1350px";
+      this.cakeStyle.width = "900px";
+      this.imageDimensions.height = "900px";
+      this.imageDimensions.width = "900px";
+      this.cakeStyle.fontSize = "300%";
+      this.buttonStyle.height = "120px";
+      this.buttonStyle.width = "180px";
+    // }
   },
 
   editCake: function(){
@@ -70,7 +87,7 @@ const cakeInformation = React.createClass({
             Description: 
             <input onChange={this.editDescriptions} placeholder={this.state.desc}/>
           </label>
-          <button onClick={this.saveChanges}>Save Changes</button>
+          <button onClick={this.saveChanges} style={this.buttonStyle}>Save Changes</button>
         </div>
       )
     }
