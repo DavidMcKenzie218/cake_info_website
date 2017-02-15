@@ -18,18 +18,30 @@ const AddCake = React.createClass({
     this.props.addCake(this.newTitle, this.newImage, this.newDesc);
   },
 
+  componentWillMount: function(){
+    this.addCakeStyle = {
+      height: "400px",
+      width: "400px",
+      margin: "8px"
+    }
+    this.inputStyle = {
+      display: "block",
+      margin: "2px"
+    }
+  },
+
   render: function(){
     return(
-      <div>
-          <label>
+      <div style={this.addCakeStyle}>
+          <label style={this.inputStyle}>
             Name of Cake: 
             <input type="text" onChange={this.addTitle} />
           </label>
-          <label>
+          <label style={this.inputStyle}>
             Url of an Image of the Cake: 
             <input type="text" onChange={this.addImage} />
           </label>
-          <label>
+          <label style={this.inputStyle}>
             Description of Cake: 
             <input type="text" onChange={this.addDescription} />
           </label>

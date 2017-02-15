@@ -11,7 +11,7 @@ const cakeInformation = React.createClass({
     this.cakeStyle = {
       height: "400px",
       width: "400px",
-      margin: "8px"
+      margin: "4px"
     }
     this.imageDimensions = {
       height: "300px",
@@ -20,6 +20,9 @@ const cakeInformation = React.createClass({
     this.editStyle = {
       display: "block",
       margin: "2px"
+    }
+    this.buttonStyle = {
+
     }
   },
 
@@ -66,7 +69,7 @@ const cakeInformation = React.createClass({
           <h3>{this.state.title}</h3>
           <img src={this.state.img} style={this.imageDimensions}/>
           <p>{this.state.desc}</p>
-          <button onClick={this.editCake}>Edit</button>
+          <button onClick={this.editCake} style={this.buttonStyle}>Edit</button>
         </div>
       )
     
