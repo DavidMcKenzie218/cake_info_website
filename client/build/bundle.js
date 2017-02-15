@@ -21550,6 +21550,10 @@
 	    this.setState({ cakes: this.cakeData.data });
 	  },
 	
+	  editCurrentCake: function editCurrentCake(cakeData, index) {
+	    this.cakeData.editData(index, cakeData);
+	  },
+	
 	  componentDidMount: function componentDidMount() {
 	    this.api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function (data) {
 	      var cakes = this.cakeData.addApiData(data);
@@ -21566,8 +21570,8 @@
 	    );
 	
 	    var cakes = this.state.cakes.map(function (cake, index) {
-	      return React.createElement(CakeInformation, { id: cake, key: index, title: cake.title, image: cake.image, desc: cake.desc });
-	    });
+	      return React.createElement(CakeInformation, { id: cake, key: index, index: index, title: cake.title, image: cake.image, desc: cake.desc, editCakeData: this.editCurrentCake });
+	    }.bind(this));
 	
 	    return React.createElement(
 	      'div',
@@ -21604,6 +21608,7 @@
 	
 	  saveChanges: function saveChanges() {
 	    this.setState({ edit: false });
+	    this.props.editCakeData({ title: this.state.title, image: this.state.img, desc: this.state.desc }, this.props.index);
 	  },
 	
 	  editTitle: function editTitle(event) {
@@ -21772,6 +21777,10 @@
 	
 	  addSearchResult: function addSearchResult(result) {
 	    this.searchResults.push(result);
+	  },
+	
+	  editData: function editData(index, data) {
+	    this.data.splice(index, 1, data);
 	  },
 	
 	  searchFor: function searchFor(keyword) {

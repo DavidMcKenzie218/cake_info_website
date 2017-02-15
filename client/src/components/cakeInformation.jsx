@@ -12,6 +12,7 @@ const cakeInformation = React.createClass({
 
   saveChanges: function(){
     this.setState({edit: false});
+    this.props.editCakeData({title: this.state.title, image: this.state.img, desc: this.state.desc}, this.props.index);
   },
 
   editTitle: function(event){

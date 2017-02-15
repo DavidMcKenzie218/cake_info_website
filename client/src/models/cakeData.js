@@ -33,6 +33,10 @@ CakeData.prototype = {
     this.searchResults.push(result);
   },
 
+  editData: function(index, data){
+    this.data.splice(index, 1, data);
+  },
+
   searchFor: function(keyword){
     this.resetSearch();
     this.data.forEach(function(cake){

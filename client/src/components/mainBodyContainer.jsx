@@ -30,6 +30,10 @@ const Container = React.createClass({
     this.setState({cakes: this.cakeData.data});
   },
 
+  editCurrentCake: function(cakeData, index){
+    this.cakeData.editData(index, cakeData)
+  },
+
   componentDidMount: function(){
     this.api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function(data){
       let cakes = this.cakeData.addApiData(data);
@@ -42,8 +46,8 @@ const Container = React.createClass({
     if(this.state.cakes == []) return(<p>Loading cakes now</p>)
 
     let cakes = this.state.cakes.map(function(cake, index){
-      return(<CakeInformation id={cake} key={index} title={cake.title} image={cake.image} desc={cake.desc}></CakeInformation>)
-    })
+      return(<CakeInformation id={cake} key={index} index={index} title={cake.title} image={cake.image} desc={cake.desc} editCakeData={this.editCurrentCake}></CakeInformation>)
+    }.bind(this))
 
     return(
       <div>
