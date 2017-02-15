@@ -11,18 +11,16 @@ const cakeInformation = React.createClass({
     this.cakeStyle = {
       height: "400px",
       width: "400px",
-      margin: "4px"
+      margin: "8px"
     }
     this.imageDimensions = {
       height: "300px",
-      width: "300px"
+      width: "300px",
+      display: "block"
     }
     this.editStyle = {
       display: "block",
-      margin: "2px"
-    }
-    this.buttonStyle = {
-
+      margin: "1px"
     }
   },
 
@@ -68,7 +66,7 @@ const cakeInformation = React.createClass({
         <div style={this.cakeStyle}>
           <h3>{this.state.title}</h3>
           <img src={this.state.img} style={this.imageDimensions}/>
-          <p>{this.state.desc}</p>
+          <span style={this.editStyle}>{this.state.desc}</span>
           <button onClick={this.editCake} style={this.buttonStyle}>Edit</button>
         </div>
       )
