@@ -21524,10 +21524,6 @@
 	  getInitialState: function getInitialState() {
 	    this.api = new ApiRequest();
 	    this.cakeData = new CakeData();
-	    this.bodyStyle = {
-	      display: "flex",
-	      flexWrap: "wrap"
-	    };
 	
 	    return { cakes: [], search: false };
 	  },
@@ -21551,6 +21547,13 @@
 	      var cakes = this.cakeData.addApiData(data);
 	      if (cakes != this.state.cakes) this.setState({ cakes: this.cakeData.data });
 	    }.bind(this));
+	  },
+	
+	  componentWillMount: function componentWillMount() {
+	    this.bodyStyle = {
+	      display: "flex",
+	      flexWrap: "wrap"
+	    };
 	  },
 	
 	  render: function render() {
@@ -21595,6 +21598,11 @@
 	
 	
 	  getInitialState: function getInitialState() {
+	
+	    return { edit: false, title: this.props.title, img: this.props.image, desc: this.props.desc };
+	  },
+	
+	  styles: function styles() {
 	    this.cakeStyle = {
 	      height: "400px",
 	      width: "400px",
@@ -21608,8 +21616,6 @@
 	      display: "block",
 	      margin: "2px"
 	    };
-	
-	    return { edit: false, title: this.props.title, img: this.props.image, desc: this.props.desc };
 	  },
 	
 	  editCake: function editCake() {
@@ -21622,6 +21628,10 @@
 	
 	  editTitle: function editTitle(event) {
 	    this.setState({ title: event.target.value });
+	  },
+	
+	  componentWillMount: function componentWillMount() {
+	    this.styles();
 	  },
 	
 	  render: function render() {

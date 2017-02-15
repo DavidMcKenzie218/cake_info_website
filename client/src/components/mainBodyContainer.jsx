@@ -10,10 +10,6 @@ const Container = React.createClass({
   getInitialState: function(){
     this.api = new ApiRequest();
     this.cakeData = new CakeData();
-    this.bodyStyle = {
-      display: "flex",
-      flexWrap: "wrap"
-    }
     
     return {cakes: [], search: false}
   },
@@ -37,6 +33,13 @@ const Container = React.createClass({
       let cakes = this.cakeData.addApiData(data);
       if(cakes != this.state.cakes) this.setState({cakes: this.cakeData.data});
     }.bind(this))   
+  },
+
+  componentWillMount: function(){
+    this.bodyStyle = {
+      display: "flex",
+      flexWrap: "wrap"
+    }
   },
 
   render: function(){

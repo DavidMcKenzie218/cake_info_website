@@ -3,6 +3,11 @@ const React = require('react');
 const cakeInformation = React.createClass({
 
   getInitialState: function(){
+
+    return({edit: false, title: this.props.title, img: this.props.image, desc: this.props.desc});
+  },
+
+  styles: function(){
     this.cakeStyle = {
       height: "400px",
       width: "400px",
@@ -16,8 +21,6 @@ const cakeInformation = React.createClass({
       display: "block",
       margin: "2px"
     }
-
-    return({edit: false, title: this.props.title, img: this.props.image, desc: this.props.desc});
   },
 
   editCake: function(){
@@ -31,6 +34,10 @@ const cakeInformation = React.createClass({
   editTitle: function(event){
     this.setState({title: event.target.value})
   },  
+
+  componentWillMount: function(){
+    this.styles();
+  },
 
   render: function(){
     if(this.state.edit){
