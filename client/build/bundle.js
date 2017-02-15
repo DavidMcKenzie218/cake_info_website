@@ -21596,11 +21596,17 @@
 	
 	  getInitialState: function getInitialState() {
 	    this.cakeStyle = {
-	      height: "600px"
+	      height: "400px",
+	      width: "400px",
+	      margin: "8px"
 	    };
 	    this.imageDimensions = {
 	      height: "300px",
 	      width: "300px"
+	    };
+	    this.editStyle = {
+	      display: "block",
+	      margin: "2px"
 	    };
 	
 	    return { edit: false, title: this.props.title, img: this.props.image, desc: this.props.desc };
@@ -21625,19 +21631,20 @@
 	        { style: this.cakeStyle },
 	        React.createElement(
 	          "label",
-	          null,
+	          { style: this.editStyle },
 	          "Name:",
 	          React.createElement("input", { onChange: this.editTitle, placeholder: this.state.title })
 	        ),
 	        React.createElement(
 	          "label",
-	          null,
+	          { style: this.editStyle },
 	          "Image:",
 	          React.createElement("input", { onChange: this.editImage, placeholder: this.state.img })
 	        ),
+	        React.createElement("img", { src: this.state.img, style: this.imageDimensions }),
 	        React.createElement(
 	          "label",
-	          null,
+	          { style: this.editStyle },
 	          "Description:",
 	          React.createElement("input", { onChange: this.editDescriptions, placeholder: this.state.desc })
 	        ),

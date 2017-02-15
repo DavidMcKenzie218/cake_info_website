@@ -4,11 +4,17 @@ const cakeInformation = React.createClass({
 
   getInitialState: function(){
     this.cakeStyle = {
-      height: "600px"
+      height: "400px",
+      width: "400px",
+      margin: "8px"
     }
     this.imageDimensions = {
       height: "300px",
       width: "300px"
+    }
+    this.editStyle = {
+      display: "block",
+      margin: "2px"
     }
 
     return({edit: false, title: this.props.title, img: this.props.image, desc: this.props.desc});
@@ -30,15 +36,16 @@ const cakeInformation = React.createClass({
     if(this.state.edit){
       return(
         <div style={this.cakeStyle}>
-          <label>
+          <label style={this.editStyle}>
             Name: 
             <input onChange={this.editTitle} placeholder={this.state.title}/>
           </label>
-          <label>
+          <label style={this.editStyle}>
             Image: 
             <input onChange={this.editImage} placeholder={this.state.img}/>
           </label>
-          <label>
+          <img src={this.state.img} style={this.imageDimensions}/>
+          <label style={this.editStyle}>
             Description: 
             <input onChange={this.editDescriptions} placeholder={this.state.desc}/>
           </label>
