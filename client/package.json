@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha src/models/specs",
+    "test-karma": "karma start",
     "start": "webpack -w"
   },
   "author": "",
