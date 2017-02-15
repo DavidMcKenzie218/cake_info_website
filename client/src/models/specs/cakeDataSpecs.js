@@ -28,4 +28,10 @@ describe("The Cake Data;", function(){
     assert.deepEqual([{name: "sponge"}, {name: "chocolate"}], cakes.data);
   })
 
+  it("should be able to edit current data", function(){
+    cakes.addApiData(exampleData);
+    cakes.editData(1, {name: "carrot"})
+    assert.deepEqual([{name: "sponge"}, {name: "carrot"}], cakes.data)
+  })
+
 })
