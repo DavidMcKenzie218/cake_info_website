@@ -21593,20 +21593,71 @@
 	  displayName: 'cakeInformation',
 	
 	
+	  getInitialState: function getInitialState() {
+	    return { edit: false, title: this.props.title, img: this.props.image, desc: this.props.desc };
+	  },
+	
+	  editCake: function editCake() {
+	    this.setState({ edit: true });
+	  },
+	
+	  saveChanges: function saveChanges() {
+	    this.setState({ edit: false });
+	  },
+	
+	  editTitle: function editTitle(event) {
+	    this.setState({ title: event.target.value });
+	  },
+	
 	  render: function render() {
+	    if (this.state.edit) {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'label',
+	          null,
+	          'Name:',
+	          React.createElement('input', { onChange: this.editTitle, placeholder: this.state.title })
+	        ),
+	        React.createElement(
+	          'label',
+	          null,
+	          'Image:',
+	          React.createElement('input', { onChange: this.editImage, placeholder: this.state.img })
+	        ),
+	        React.createElement(
+	          'label',
+	          null,
+	          'Description:',
+	          React.createElement('input', { onChange: this.editDescriptions, placeholder: this.state.desc })
+	        ),
+	        React.createElement(
+	          'button',
+	          { onClick: this.saveChanges },
+	          'Save Changes'
+	        )
+	      );
+	    }
+	
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
 	        'h3',
 	        null,
-	        this.props.title
+	        this.state.title
 	      ),
-	      React.createElement('img', { src: this.props.image }),
+	      React.createElement('img', { src: this.state.img }),
 	      React.createElement(
 	        'p',
 	        null,
-	        this.props.desc
+	        this.state.desc
+	      ),
+	      React.createElement(
+	        'button',
+	        { onClick: this.editCake },
+	        'Edit'
 	      )
 	    );
 	  }
