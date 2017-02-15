@@ -21538,6 +21538,7 @@
 	  searchForCake: function searchForCake(keyword) {
 	    this.cakeData.searchFor(keyword);
 	    if (this.cakeData.searchResults.length > 0) this.setState({ search: true, cakes: this.cakeData.searchResults });
+	    console.log(this.state.cakes);
 	  },
 	
 	  resetSearch: function resetSearch() {
@@ -21607,6 +21608,18 @@
 	
 	  editTitle: function editTitle(event) {
 	    this.setState({ title: event.target.value });
+	  },
+	
+	  editImage: function editImage() {
+	    this.setState({ img: event.target.value });
+	  },
+	
+	  editDescriptions: function editDescriptions() {
+	    this.setState({ desc: this.target.value });
+	  },
+	
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    this.setState({ title: nextProps.title, img: nextProps.image, desc: nextProps.desc });
 	  },
 	
 	  render: function render() {

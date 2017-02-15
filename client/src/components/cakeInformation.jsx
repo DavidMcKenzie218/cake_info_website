@@ -15,8 +15,20 @@ const cakeInformation = React.createClass({
   },
 
   editTitle: function(event){
-    this.setState({title: event.target.value})
+    this.setState({title: event.target.value});
+  },
+
+  editImage: function(){
+    this.setState({img: event.target.value});
+  },
+  
+  editDescriptions: function(){
+    this.setState({desc: this.target.value});
   },  
+
+  componentWillReceiveProps: function(nextProps){
+    this.setState({title: nextProps.title, img: nextProps.image, desc: nextProps.desc})
+  },
 
   render: function(){
     if(this.state.edit){

@@ -18,6 +18,7 @@ const Container = React.createClass({
   searchForCake: function(keyword){
     this.cakeData.searchFor(keyword);
     if(this.cakeData.searchResults.length > 0) this.setState({search: true, cakes: this.cakeData.searchResults})
+      console.log(this.state.cakes);
   },
 
   resetSearch: function(){
