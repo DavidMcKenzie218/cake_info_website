@@ -1,4 +1,5 @@
 const React = require('react');
+const Style = require('./styles/cakeStyles.js')
 
 const AddCake = React.createClass({
 
@@ -19,33 +20,39 @@ const AddCake = React.createClass({
   },
 
   componentWillMount: function(){
-    this.addCakeStyle = {
-      height: "400px",
-      width: "400px",
-      margin: "8px"
-    }
-    this.inputStyle = {
-      display: "block",
-      margin: "2px"
+    this.style = new Style();
+
+    this.addCakeStyle = this.style.cakeStyle;
+
+    this.inputStyle = this.style.inputStyle;
+
+    this.buttonStyle = this.style.buttonStyle;
+
+    this.editStyle = this.style.editStyle;
+
+    this.buttonStyle = this.style.buttonStyle
+
+    if(window.innerWidth <= 800) {
+      this.style.optimisation();
     }
   },
 
   render: function(){
     return(
       <div style={this.addCakeStyle}>
-          <label style={this.inputStyle}>
+          <label style={this.editStyle}>
             Name of Cake: 
-            <input type="text" onChange={this.addTitle} />
+            <input type="text" onChange={this.addTitle} style={this.inputStyle}/>
           </label>
-          <label style={this.inputStyle}>
+          <label style={this.editStyle}>
             Url of an Image of the Cake: 
-            <input type="text" onChange={this.addImage} />
+            <input type="text" onChange={this.addImage} style={this.inputStyle}/>
           </label>
-          <label style={this.inputStyle}>
+          <label style={this.editStyle}>
             Description of Cake: 
-            <input type="text" onChange={this.addDescription} />
+            <input type="text" onChange={this.addDescription} style={this.inputStyle}/>
           </label>
-          <button onClick={this.submitData}>Submit</button>
+          <button onClick={this.submitData} style={this.buttonStyle}>Submit</button>
       </div>
     )
   }

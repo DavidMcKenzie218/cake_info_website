@@ -11,7 +11,7 @@ const Container = React.createClass({
     this.api = new ApiRequest();
     this.cakeData = new CakeData();
     
-    return {cakes: [], search: false, device: "browser"}
+    return {cakes: [], search: false}
   },
 
   searchForCake: function(keyword){
@@ -32,11 +32,6 @@ const Container = React.createClass({
     this.cakeData.editData(index, cakeData)
   },
 
-  optimisation: function(){
-    if(window.innerWidth <= 800 && window.innerHeight <= 1100 || window.innerHeight <=1100 && window.innerWidth <= 800) this.setState({device: "ipad"});
-    if(window.innerWidth <= 600 && window.innerHeight <=800) this.setState({device: "mobile"});
-  },
-
   componentDidMount: function(){
     this.api.getAll("https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json", function(data){
       let cakes = this.cakeData.addApiData(data);
@@ -49,7 +44,6 @@ const Container = React.createClass({
       display: "flex",
       flexWrap: "wrap"
     }
-    this.optimisation();
   },
 
   render: function(){
