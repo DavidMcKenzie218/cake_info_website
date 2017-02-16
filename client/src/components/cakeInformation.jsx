@@ -24,21 +24,31 @@ const cakeInformation = React.createClass({
     }
     this.buttonStyle = {
       height: "40px",
-      width: "60px"
+      width: "60px",
+      backgroundColor: "#e8e1ff"
+    }
+    this.inputStyle = {
+      height: "10px",
+      width: "100px"
     }
     this.optimisation();
   },
 
   optimisation: function(){
-    // if(window.innerWidth =< 800) {
+    if(window.innerWidth <= 800) {
       this.cakeStyle.height =  "1350px";
       this.cakeStyle.width = "900px";
       this.imageDimensions.height = "900px";
       this.imageDimensions.width = "900px";
       this.cakeStyle.fontSize = "300%";
       this.buttonStyle.height = "120px";
-      this.buttonStyle.width = "180px";
-    // }
+      this.buttonStyle.width = "100%";
+      this.buttonStyle.height = "200px";
+      this.buttonStyle.fontSize = "100%";
+      this.inputStyle.height = "50px";
+      this.inputStyle.width = "700px";
+      this.inputStyle.fontSize = "100%"
+    }
   },
 
   editCake: function(){
@@ -76,16 +86,16 @@ const cakeInformation = React.createClass({
         <div style={this.cakeStyle}>
           <label style={this.editStyle}>
             Name: 
-            <input onChange={this.editTitle} placeholder={this.state.title}/>
+            <input onChange={this.editTitle} placeholder={this.state.title} style={this.inputStyle}/>
           </label>
           <label style={this.editStyle}>
             Image: 
-            <input onChange={this.editImage} placeholder={this.state.img}/>
+            <input onChange={this.editImage} placeholder={this.state.img} style={this.inputStyle}/>
           </label>
           <img src={this.state.img} style={this.imageDimensions}/>
           <label style={this.editStyle}>
             Description: 
-            <input onChange={this.editDescriptions} placeholder={this.state.desc}/>
+            <input onChange={this.editDescriptions} placeholder={this.state.desc} style={this.inputStyle}/>
           </label>
           <button onClick={this.saveChanges} style={this.buttonStyle}>Save Changes</button>
         </div>
